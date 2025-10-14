@@ -1,7 +1,7 @@
 const users = [
   {
     id: "u1",
-    username: "employee1",
+    username: "employee",
     password: "emp123",
     role: "employee",
     name: "Employee",
