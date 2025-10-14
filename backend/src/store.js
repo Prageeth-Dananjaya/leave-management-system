@@ -15,6 +15,6 @@ const users = [
   },
 ];
 
-const leaves = [];
+const leavesList = [];
 
-module.exports = { users, leaves };
+module.exports = { users, leavesList };
