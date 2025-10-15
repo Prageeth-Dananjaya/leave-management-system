@@ -19,9 +19,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="h-screen flex justify-center items-center bg-gray-100">
-      <div className="flex flex-col items-center justify-center h-[480px] w-[400px] bg-amber-300 border rounded-lg shadow-lg p-8">
-        <h2 className="text-2xl font-bold mb-6">Login</h2>
+    <div className="h-screen flex justify-center items-center bg-stone-100">
+      <div className="flex flex-col items-center justify-center h-[480px] w-[400px] bg-indigo-200 border rounded-lg shadow-lg p-8">
+        <h2 className="text-3xl font-bold mb-6">Login</h2>
         <form onSubmit={handleSubmit} className="flex flex-col w-full gap-4">
           <input
             type="text"
@@ -29,7 +29,7 @@ export default function LoginPage() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            className="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-4 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500"
           />
           <input
             type="password"
@@ -37,12 +37,12 @@ export default function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-4 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500"
           />
           <button
             type="submit"
             disabled={loading}
-            className="bg-amber-600 text-white py-2 rounded-md font-semibold hover:bg-amber-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-indigo-600 text-white py-2 rounded-md font-semibold hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Logging in ..." : "Login"}
           </button>
