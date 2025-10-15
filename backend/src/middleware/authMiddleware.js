@@ -7,7 +7,7 @@ function authenticate(req, res, next) {
   const token = auth.split(" ")[1];
   try {
     req.user = jwt.verify(token, SECRET);
-    next;
+    next();
   } catch (e) {
     return res.status(401).json({ message: "Invalid token" });
   }
