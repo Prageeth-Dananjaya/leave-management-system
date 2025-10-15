@@ -52,23 +52,22 @@
 
 ## 📋 API Endpoints Summary
 
-| Method | Endpoint              | Auth | Role        | Description                                 |
-|--------|----------------------|------|------------|---------------------------------------------|
-| POST   | /api/auth/login       | ❌   | Any        | Authenticate user and get JWT               |
-| POST   | /api/leaves           | ✅   | Employee/Admin | Submit a new leave request                  |
-| GET    | /api/leaves           | ✅   | Admin      | Get all leave requests (filter by employee) |
-| GET    | /api/leaves/:id       | ✅   | Employee/Admin | Get specific leave by ID                   |
-| PUT    | /api/leaves/:id       | ✅   | Employee/Admin | Update leave or status                      |
-| DELETE | /api/leaves/:id       | ✅   | Employee/Admin | Cancel or delete a leave                     |
-| GET    | /api/admin/leaves     | ✅   | Admin      | Admin view all leaves                        |
-
+| Method | Endpoint          | Auth | Role           | Description                                 |
+| ------ | ----------------- | ---- | -------------- | ------------------------------------------- |
+| POST   | /api/auth/login   | ❌   | Any            | Authenticate user and get JWT               |
+| POST   | /api/leaves       | ✅   | Employee/Admin | Submit a new leave request                  |
+| GET    | /api/leaves       | ✅   | Admin          | Get all leave requests (filter by employee) |
+| GET    | /api/leaves/:id   | ✅   | Employee/Admin | Get specific leave by ID                    |
+| PUT    | /api/leaves/:id   | ✅   | Employee/Admin | Update leave or status                      |
+| DELETE | /api/leaves/:id   | ✅   | Employee/Admin | Cancel or delete a leave                    |
+| GET    | /api/admin/leaves | ✅   | Admin          | Admin view all leaves                       |
 
 ---
 
 ## Login User (Employee / Admin)
 
 **POST** `/api/auth/login`  
-**Auth Required:** ❌  
+**Auth Required:** ❌
 
 **Description:** Authenticate a user and return a JWT token.
 
@@ -86,3 +85,18 @@
   "username": "admin",
   "password": "admin123"
 }
+
+## Frontend
+
+## 🧩 Tech Stack
+
+---
+
+- React
+- Redux Toolkit (state management)
+- React Redux (bindings for Redux)
+- React Router DOM (routing)
+- Tailwind CSS (styling)
+- Axios (HTTP requests)
+- Jest (for unit testing)
+```
