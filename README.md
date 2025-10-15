@@ -85,6 +85,7 @@
   "username": "admin",
   "password": "admin123"
 }
+```
 
 ## Frontend
 
@@ -99,4 +100,3 @@
 - Tailwind CSS (styling)
 - Axios (HTTP requests)
 - Jest (for unit testing)
-```
