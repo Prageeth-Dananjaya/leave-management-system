@@ -12,21 +12,36 @@ export default function LeaveList() {
   }, [dispatch]);
 
   return (
-    <table border="1">
-      <thead>
-        <tr>
-          <th>Employee</th>
-          <th>From</th>
-          <th>To</th>
-          <th>Reason</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        {list.map((leave) => (
-          <LeaveItem key={leave.id} leave={leave} />
-        ))}
-      </tbody>
-    </table>
+    <div className="overflow-x-auto bg-white rounded shadow-md">
+      <table className="min-w-full divide-y divide-gray-200">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+              Employee
+            </th>
+            <th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+              From
+            </th>
+            <th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+              To
+            </th>
+            <th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+              Reason
+            </th>
+            <th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+              Status
+            </th>
+            <th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+          {list.map((leave) => (
+            <LeaveItem key={leave.id} leave={leave} />
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
