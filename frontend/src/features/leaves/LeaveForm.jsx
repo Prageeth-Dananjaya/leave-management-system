@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createLeave } from "./leavesSlice";
+import toast from "react-hot-toast";
 
 export default function LeaveForm() {
   const [form, setForm] = useState({ fromDate: "", toDate: "", reason: "" });
@@ -9,19 +10,25 @@ export default function LeaveForm() {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (new Date(form.fromDate) > new Date(form.toDate)) {
-      alert("Invalid date range");
+      toast.error("Invalid date range");
       return;
     }
-    dispatch(createLeave(form));
+    try {
+      await dispatch(createLeave(form)).unwrap();
+      toast.success("Leave request submitted!");
+      setForm({ fromDate: "", toDate: "", reason: "" });
+    } catch (err) {
+      toast.error(err || "Failed to submit leave request");
+    }
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white p-6 rounded shadow-md space-y-4 w-[600px]"
+      className="bg-white p-6 rounded shadow-md space-y-4 md:w-[600px]"
     >
       <h3 className="text-xl font-semibold text-gray-700">Apply for Leave</h3>
       <div className="flex gap-4">

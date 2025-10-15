@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { updateLeave, deleteLeave } from "./leavesSlice";
+import toast from "react-hot-toast";
 
 export default function LeaveItem({ leave }) {
   const dispatch = useDispatch();
@@ -33,7 +34,14 @@ export default function LeaveItem({ leave }) {
       <td className="px-4 py-2 space-x-2">
         {canEdit && (
           <button
-            onClick={() => dispatch(deleteLeave(leave.id))}
+            onClick={async () => {
+              try {
+                await dispatch(deleteLeave(leave.id)).unwrap();
+                toast.success("Leave cancelled");
+              } catch {
+                toast.error("Failed to cancel");
+              }
+            }}
             className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition text-sm"
           >
             Cancel
@@ -42,11 +50,16 @@ export default function LeaveItem({ leave }) {
         {canAdmin && leave.status === "Pending" && (
           <>
             <button
-              onClick={() =>
-                dispatch(
-                  updateLeave({ id: leave.id, data: { status: "Approved" } })
-                )
-              }
+              onClick={async () => {
+                try {
+                  await dispatch(
+                    updateLeave({ id: leave.id, data: { status: "Approved" } })
+                  ).unwrap();
+                  toast.success("Leave approved");
+                } catch {
+                  toast.error("Failed to approve");
+                }
+              }}
               className="px-2 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition text-sm"
             >
               Approve

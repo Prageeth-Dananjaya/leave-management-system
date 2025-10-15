@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "./authSlice";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -12,9 +13,13 @@ export default function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await dispatch(loginUser({ username, password }));
-    if (result.meta.requestStatus === "fulfilled") {
+
+    try {
+      await dispatch(loginUser({ username, password })).unwrap();
+      toast.success("Login successful! Redirecting...");
       navigate("/dashboard");
+    } catch (err) {
+      toast.error(err || "Invalid username or password");
     }
   };
 
@@ -46,7 +51,7 @@ export default function LoginPage() {
           >
             {loading ? "Logging in ..." : "Login"}
           </button>
-          {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
+          {/* {error && <p className="text-red-600 text-sm mt-2">{error}</p>} */}
         </form>
       </div>
     </div>
