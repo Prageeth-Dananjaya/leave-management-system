@@ -29,7 +29,7 @@ export const updateLeave = createAsyncThunk(
   "leaves/updateLeave",
   async ({ id, data }, thunkAPI) => {
     try {
-      const res = await api.get(`/leaves/${id}`, data);
+      const res = await api.put(`/leaves/${id}`, data);
       return res.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.response?.data?.message);
